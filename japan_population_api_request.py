@@ -29,8 +29,9 @@ for stats_data_id in stats_data_ids:
     response = requests.get(BASE_URL, params=params)
 
     if response.status_code == 200:
-        print(f"\n处理 statsDataId: {stats_data_id}")
-        print("API返回的前100个字符：")
+        print(f"\nstatsDataId: {stats_data_id}")
+        print(f"")
+        print("Return 100 characters of API response:")
         print(response.text[:100])  
         
         csv_data = io.StringIO(response.text)
@@ -42,21 +43,21 @@ for stats_data_id in stats_data_ids:
             try:
                 df = pd.read_csv(csv_data, sep='\t')
             except:
-                print("无法解析CSV数据，请检查原始数据格式")
+                print("Can't parse CSV data, please check the original data format")
                 continue
         
         if df.empty:
-            print("解析后的数据框为空，请检查原始数据格式")
+            print("The dataframe is empty. Please check the original data format")
         else:
-            if not os.path.exists('data'):
-                os.makedirs('data')
+            if not os.path.exists('raw'):
+                os.makedirs('raw')
             
-            output_file = os.path.join('data', f'japan_population_data_{stats_data_id}.csv')
+            output_file = os.path.join('raw', f'japan_population_raw_{stats_data_id}.csv')
             df.to_csv(output_file, index=False, encoding='utf-8-sig')
-            print(f"CSV文件已保存为：{output_file}")
+            print(f"Save as: {output_file}")
         
-        print("\n解析后的数据预览：")
-        print(df.head())  
+        print("\n First 5 rows:")
+        print(df.head(5))  
     else:
-        print(f"请求失败，状态码：{response.status_code}")
+        print(f"Request failed, status code: {response.status_code}")
         print(response.text)

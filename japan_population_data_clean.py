@@ -66,7 +66,7 @@ def process_file(file_path):
 
     return data[['year', 'month', 'gender', 'age', 'value']]
 
-all_data = pd.concat([process_file(os.path.join('data', file)) for file in files], ignore_index=True)
+all_data = pd.concat([process_file(os.path.join('raw', file)) for file in files], ignore_index=True)
 
 all_data['gender'] = all_data['gender'].map({'男': 'male', '女': 'female'})
 
@@ -84,5 +84,5 @@ all_data = all_data.sort_values(['year', 'month', 'gender', 'age']).reset_index(
 
 print(all_data.head(10))
 
-all_data.to_csv('japan_population_data.csv', index=False, encoding='utf-8-sig')
+all_data.to_csv('data/japan_population_data.csv', index=False, encoding='utf-8-sig')
 print(f"Data saved to japan_population_data.csv")   

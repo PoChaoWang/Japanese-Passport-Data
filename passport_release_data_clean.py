@@ -260,7 +260,7 @@ def general_passport_amount(file_path):
 # ------------------------------------------------------------
 # check folder and file
 
-folder_path = 'data'  
+folder_path = 'raw'  
 # print(f"foler path: {os.path.abspath(folder_path)}")
 
 excel_files = glob.glob(os.path.join(folder_path, '*.xlsx'))
@@ -274,102 +274,102 @@ else:
 # ------------------------------------------------------------
 # category
 
-# category_all_data = []
-# for file in excel_files:
-#     category_df = category_clean(file)
-#     if category_df is not None and not category_df.empty:
-#         category_all_data.append(category_df)
+category_all_data = []
+for file in excel_files:
+    category_df = category_clean(file)
+    if category_df is not None and not category_df.empty:
+        category_all_data.append(category_df)
 
-# if category_all_data:
-#     combined_category_df = pd.concat(category_all_data, ignore_index=True)
-# combined_category_df = combined_category_df.sort_values(['year', 'month'], ascending=[False, False])
+if category_all_data:
+    combined_category_df = pd.concat(category_all_data, ignore_index=True)
+combined_category_df = combined_category_df.sort_values(['year', 'month'], ascending=[False, False])
 
-# print(combined_category_df)
-# # Save data to the parent directory
-# parent_directory = os.path.dirname(folder_path)
-# csv_output_path = os.path.join(parent_directory, 'category.csv')
-# combined_category_df.to_csv(csv_output_path, index=False, encoding='utf-8-sig')
-# print(f"save as: {csv_output_path}")
+print(combined_category_df)
+# Save data to the parent directory
+parent_directory = os.path.dirname(folder_path)
+csv_output_path = os.path.join(parent_directory, 'data/category.csv')
+combined_category_df.to_csv(csv_output_path, index=False, encoding='utf-8-sig')
+print(f"save as: {csv_output_path}")
 
 # ------------------------------------------------------------
 # age
 
-# age_all_data = []
-# for file in excel_files:
-#     age_df = age_clean(file)
-#     if age_df is not None and not age_df.empty:
-#         age_all_data.append(age_df)
+age_all_data = []
+for file in excel_files:
+    age_df = age_clean(file)
+    if age_df is not None and not age_df.empty:
+        age_all_data.append(age_df)
 
-# if age_all_data:
-#     combined_age_df = pd.concat(age_all_data, ignore_index=True)
-# combined_age_df = combined_age_df.sort_values(['year', 'month'], ascending=[False, False])
+if age_all_data:
+    combined_age_df = pd.concat(age_all_data, ignore_index=True)
+combined_age_df = combined_age_df.sort_values(['year', 'month'], ascending=[False, False])
 
-# # print(combined_age_df)
-# parent_directory = os.path.dirname(folder_path)
-# csv_output_path = os.path.join(parent_directory, 'age.csv')
-# combined_age_df.to_csv(csv_output_path, index=False, encoding='utf-8-sig')
-# print(f"save as: {csv_output_path}")
+# print(combined_age_df)
+parent_directory = os.path.dirname(folder_path)
+csv_output_path = os.path.join(parent_directory, 'data/age.csv')
+combined_age_df.to_csv(csv_output_path, index=False, encoding='utf-8-sig')
+print(f"save as: {csv_output_path}")
 
 # ------------------------------------------------------------
 # gender
 
-# gender_all_data = []
-# for file in excel_files:
-#     gender_df = gender_clean(file)
-#     if gender_df is not None and not gender_df.empty:
-#         gender_all_data.append(gender_df)
+gender_all_data = []
+for file in excel_files:
+    gender_df = gender_clean(file)
+    if gender_df is not None and not gender_df.empty:
+        gender_all_data.append(gender_df)
 
-# if gender_all_data:
-#     combined_gender_df = pd.concat(gender_all_data, ignore_index=True)
-# combined_gender_df = combined_gender_df.sort_values(['year', 'month'], ascending=[False, False])
+if gender_all_data:
+    combined_gender_df = pd.concat(gender_all_data, ignore_index=True)
+combined_gender_df = combined_gender_df.sort_values(['year', 'month'], ascending=[False, False])
 
-# # print(combined_gender_df)
-# parent_directory = os.path.dirname(folder_path)
-# csv_output_path = os.path.join(parent_directory, 'gender.csv')
-# combined_gender_df.to_csv(csv_output_path, index=False, encoding='utf-8-sig')
-# print(f"save as: {csv_output_path}")
+# print(combined_gender_df)
+parent_directory = os.path.dirname(folder_path)
+csv_output_path = os.path.join(parent_directory, 'data/gender.csv')
+combined_gender_df.to_csv(csv_output_path, index=False, encoding='utf-8-sig')
+print(f"save as: {csv_output_path}")
 
 # ------------------------------------------------------------
 # city
 
-# city_all_data = []
-# for file in excel_files:
-#     city_df = city_clean(file)
-#     if city_df is not None and not city_df.empty:
-#         city_all_data.append(city_df)
+city_all_data = []
+for file in excel_files:
+    city_df = city_clean(file)
+    if city_df is not None and not city_df.empty:
+        city_all_data.append(city_df)
 
-# if city_all_data:
-#     combined_city_df = pd.concat(city_all_data, ignore_index=True)
-#     combined_city_df = combined_city_df.sort_values(['year', 'month'], ascending=[False, False])
+if city_all_data:
+    combined_city_df = pd.concat(city_all_data, ignore_index=True)
+    combined_city_df = combined_city_df.sort_values(['year', 'month'], ascending=[False, False])
 
-#     print(combined_city_df)
-#     parent_directory = os.path.dirname(folder_path)
-#     csv_output_path = os.path.join(parent_directory, 'city.csv')
-#     combined_city_df.to_csv(csv_output_path, index=False, encoding='utf-8-sig')
-#     print(f"save as: {csv_output_path}")
-# else:
-#     print("No valid city data to process.")
+    print(combined_city_df)
+    parent_directory = os.path.dirname(folder_path)
+    csv_output_path = os.path.join(parent_directory, 'data/city.csv')
+    combined_city_df.to_csv(csv_output_path, index=False, encoding='utf-8-sig')
+    print(f"save as: {csv_output_path}")
+else:
+    print("No valid city data to process.")
 
-# # ------------------------------------------------------------
-# # age_city
+# ------------------------------------------------------------
+# age_city
 
-# age_city_all_data = []
-# for file in excel_files:
-#     age_city_df = age_city_clean(file)
-#     if age_city_df is not None and not age_city_df.empty:
-#         age_city_all_data.append(age_city_df)
+age_city_all_data = []
+for file in excel_files:
+    age_city_df = age_city_clean(file)
+    if age_city_df is not None and not age_city_df.empty:
+        age_city_all_data.append(age_city_df)
 
-# if age_city_all_data:
-#     combined_age_city_df = pd.concat(age_city_all_data, ignore_index=True)
-#     combined_age_city_df = combined_age_city_df.sort_values(['year', 'city'], ascending=[False, False])
+if age_city_all_data:
+    combined_age_city_df = pd.concat(age_city_all_data, ignore_index=True)
+    combined_age_city_df = combined_age_city_df.sort_values(['year', 'city'], ascending=[False, False])
 
-#     print(combined_age_city_df)
-#     parent_directory = os.path.dirname(folder_path)
-#     csv_output_path = os.path.join(parent_directory, 'age_city.csv')
-#     combined_age_city_df.to_csv(csv_output_path, index=False, encoding='utf-8-sig')
-#     print(f"save as: {csv_output_path}")
-# else:
-#     print("No valid age & city data to process.")
+    print(combined_age_city_df)
+    parent_directory = os.path.dirname(folder_path)
+    csv_output_path = os.path.join(parent_directory, 'data/age_city.csv')
+    combined_age_city_df.to_csv(csv_output_path, index=False, encoding='utf-8-sig')
+    print(f"save as: {csv_output_path}")
+else:
+    print("No valid age & city data to process.")
 
 # ------------------------------------------------------------
 # general_passport_amount
@@ -387,7 +387,7 @@ if general_passport_all_data:
 
     print(combined_general_passport_df)
     parent_directory = os.path.dirname(folder_path)
-    csv_output_path = os.path.join(parent_directory, 'general_passport.csv')
+    csv_output_path = os.path.join(parent_directory, 'data/general_passport.csv')
     combined_general_passport_df.to_csv(csv_output_path, index=False, encoding='utf-8-sig')
     print(f"save as: {csv_output_path}")
 else:
